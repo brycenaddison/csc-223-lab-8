@@ -29,4 +29,17 @@ public class MathUtilities
     	int value = (int)(x * Math.pow(10, EPSILON_POWER - 1));
     	return value / Math.pow(10, EPSILON_POWER - 1);
     }
+
+    public static boolean doubleGEQ(double a, double b) {
+        if (doubleEquals(a, b)) return true;
+
+        return a > b;
+    }
+
+    public static boolean doubleLEQ(double a, double b) {
+        if (doubleEquals(a, b)) return true;
+
+        return a < b;
+    }
+
 }
