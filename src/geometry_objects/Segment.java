@@ -151,16 +151,22 @@ public class Segment extends GeometricObject
 	 */
 	public boolean coincideWithoutOverlap(Segment that)
 	{
-		if (!isCollinearWith(that)) return false;
+		// handle same line in
+		// incorrectly returned true because it only checks slope and endpoints
+		// endpoints are okay to overlap, and a same line has both endpoints overlapped
+		// and same slope. didn't consider the rest of the line that does overlap
+		if (this.equals(that)) return false;
 
-		// Check the endpoints of @that 
-		if (this.pointLiesBetweenEndpoints(that.getPoint1())) return false;
-
-		if (this.pointLiesBetweenEndpoints(that.getPoint2())) return false;
-
-		return true;
+		// check for same slope
+		return   this.isCollinearWith(that) &&
+				// and no endpoint of either contained within the other line, excluding endpoints
+				!this.pointLiesBetweenEndpoints(that.getPoint1()) &&
+				!this.pointLiesBetweenEndpoints(that.getPoint2()) &&
+				!that.pointLiesBetweenEndpoints(this.getPoint1()) &&
+				!that.pointLiesBetweenEndpoints(this.getPoint2());
 	}
-	
+
+
 	/**
 	 * 
 	 * @return the set of Points that lie on this segment (ordered lexicographically)
