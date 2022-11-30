@@ -1,0 +1,42 @@
+{
+	"Figure":
+	{
+		"Description": "A square and triangle that share one edge.",
+		"Points":
+		[
+			{ 
+				"name": "A",
+			 	"x": 0,
+				"y": 0
+			},
+			{ 
+				"name": "B",
+			 	"x": 0,
+				"y": 2
+			},	
+			{ 
+				"name": "C",
+			 	"x": 2,
+				"y": 0
+			},
+			{ 
+				"name": "D",
+			 	"x": 2,
+				"y": 2
+			},
+			{ 
+				"name": "E",
+			 	"x": 1,
+				"y": 3
+			}
+		],
+		"Segments":
+		[
+			{ "A" : ["B","C"]},
+			{ "B" : ["D","E"]},
+			{ "C" : ["D"]},
+			{ "D" : ["E"]}
+		]
+
+	}
+}

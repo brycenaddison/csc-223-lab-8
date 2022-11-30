@@ -1,0 +1,43 @@
+//
+//
+// D            C
+//
+//       x (implicit)
+//
+// A            B
+{
+  "Figure" :
+  {
+    "Description" : "Square where every point is connected to every other point.",
+    "Points" :
+	  [
+	    {
+	      "name" : "A",
+		  "x" : 0,
+   	      "y" : 0
+		},
+	    {
+	      "name" : "B",
+		  "x" : 4,
+   	      "y" : 0
+		},
+	    {
+	      "name" : "C",
+		  "x" : 4,
+   	      "y" : 4
+		},
+        {
+          "name" : "D",
+          "x" : 0,
+          "y" : 4
+        }
+	  ],
+  
+    "Segments" :
+      [
+	      {"A" : ["B", "C", "D"] },
+        {"B" : ["C", "D"] },
+        {"C" : ["D"] }
+      ]
+  }
+}
