@@ -171,8 +171,14 @@ public class Angle implements Comparable<Angle>
 	}
 
 	@Override
-	public boolean equals(Object obj)
-	{
-		// TODO
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Angle that = (Angle) o;
+
+		// Only equal if rays are shared (point-based)
+		boolean sameRays = this.getRay1().equals(that.getRay1()) && this.getRay2().equals(that.getRay2());
+		boolean oppRays = this.getRay2().equals(that.getRay1()) && this.getRay1().equals(that.getRay2());
+		return sameRays || oppRays;
 	}
 }
