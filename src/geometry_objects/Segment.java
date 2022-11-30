@@ -68,7 +68,7 @@ public class Segment extends GeometricObject
 	 * @return true if this segment contains a subsegment.
 	 */
 
-	public boolean HasSubSegment(Segment candidate)
+	public boolean hasSubSegment(Segment candidate)
 	{
 		return this.pointLiesOnSegment(candidate._point1) &&
                this.pointLiesOnSegment(candidate._point2);
