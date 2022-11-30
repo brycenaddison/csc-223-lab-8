@@ -32,7 +32,6 @@ public class ImplicitPointPreprocessor
 		if (givenSegments == null) givenSegments = new ArrayList<Segment>();
 		
 		Set<Point> implicitPoints = new LinkedHashSet<Point>();
-		PointDatabase points = new PointDatabase(givenPoints.getPoints().stream().toList());
 
         for (int i = 0; i < givenSegments.size() - 1; i++)
 		{
@@ -40,10 +39,10 @@ public class ImplicitPointPreprocessor
 			{
 				Point intersection = givenSegments.get(i).segmentIntersection(givenSegments.get(j));
 
-				if (intersection != null && points.getPoint(intersection) == null)
+				if (intersection != null && givenPoints.getPoint(intersection) == null)
 				{
-					points.put(intersection.getX(), intersection.getY());
-					implicitPoints.add(points.getPoint(intersection));
+					givenPoints.put(intersection.getX(), intersection.getY());
+					implicitPoints.add(givenPoints.getPoint(intersection));
 				}
 			}
 		}
