@@ -117,5 +117,8 @@ public class Point implements Comparable<Point>
 	public Double distanceFrom(Point other) {
 		return Math.sqrt(Math.pow(this.getX() - other.getX(), 2) + Math.pow(this.getY() - other.getY(), 2));
 	}
-	
+
+	public static Double distance(Point a, Point b) {
+		return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
+	}
 }
