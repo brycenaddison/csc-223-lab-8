@@ -31,14 +31,12 @@ class PreprocessorTest
 	void test_implicit_crossings()
 	{
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(
-				"jsonfiles.fully_connected_irregular_polygon.json"
+				"jsonfiles/fully_connected_irregular_polygon.json"
 		);
 
 		PointDatabase points = pair.getKey();
 
 		Set<Segment> segments = pair.getValue();
-
-		Preprocessor pp = new Preprocessor(points, segments);
 
 		// 5 new implied points inside the pentagon
 		Set<Point> iPoints = ImplicitPointPreprocessor.compute(points, new ArrayList<Segment>(segments));
@@ -72,6 +70,9 @@ class PreprocessorTest
 		//
 		// There are 15 implied segments inside the pentagon; see figure above
 		//
+
+		Preprocessor pp = new Preprocessor(points, segments);
+
 		Set<Segment> iSegments = pp.computeImplicitBaseSegments(iPoints);
 		assertEquals(15, iSegments.size());
 
@@ -170,18 +171,19 @@ class PreprocessorTest
 	void test_implicit_crossed_square()
 	{
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(
-				"jsonfiles.crossed_square.json"
+				"jsonfiles/crossed_square.json"
 		);
 
 		PointDatabase points = pair.getKey();
 
 		Set<Segment> segments = pair.getValue();
 
-		Preprocessor pp = new Preprocessor(points, segments);
 
 		// 1 new implied points inside the pentagon
 		Set<Point> iPoints = ImplicitPointPreprocessor.compute(points, new ArrayList<Segment>(segments));
 		assertEquals(1, iPoints.size());
+
+		Preprocessor pp = new Preprocessor(points, segments);
 
 
 		// D            C
@@ -261,7 +263,7 @@ class PreprocessorTest
 	void test_no_implicit()
 	{
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(
-				"jsonfiles.simple_triangle.json"
+				"jsonfiles/simple_triangle.json"
 		);
 
 		PointDatabase points = pair.getKey();

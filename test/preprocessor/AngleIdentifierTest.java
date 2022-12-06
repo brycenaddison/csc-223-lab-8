@@ -1,6 +1,5 @@
 package preprocessor;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -27,8 +26,6 @@ class AngleIdentifierTest
 	
 	protected void init(String filename)
 	{
-		FigureNode fig = InputFacade.extractFigure("crossing_symmetric_triangle.json");
-
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(filename);
 
 		_points = pair.getKey();
@@ -52,14 +49,14 @@ class AngleIdentifierTest
 	@Test
 	void test_crossing_symmetric_triangle()
 	{
-		init("jsonfiles.crossing_symmetric_triangle.json");
+		init("jsonfiles/crossing_symmetric_triangle.json");
 
 		AngleIdentifier angleIdentifier = new AngleIdentifier(_segments);
 
 		AngleEquivalenceClasses computedAngles = angleIdentifier.getAngles();
 
 		// The number of classes should equate to the number of 'minimal' angles
-		assertEquals("Number of Angle Equivalence classes", 25, computedAngles.numClasses());
+		assertEquals(25, computedAngles.numClasses());
 		
 		//
 		// ALL original segments: 8 in this figure.
@@ -207,14 +204,14 @@ class AngleIdentifierTest
 	@Test
 	void test_single_triangle()
 	{
-		init("jsonfiles.simple_triangle.json");
+		init("jsonfiles/simple_triangle.json");
 
 		AngleIdentifier angleIdentifier = new AngleIdentifier(_segments);
 
 		AngleEquivalenceClasses computedAngles = angleIdentifier.getAngles();
 
 		// The number of classes should equate to the number of 'minimal' angles
-		assertEquals("Number of Angle Equivalence classes", 3, computedAngles.numClasses());
+		assertEquals(3, computedAngles.numClasses());
 
 		//
 		// ALL original segments: 3 in this figure.
@@ -277,14 +274,14 @@ class AngleIdentifierTest
 	@Test
 	void test_crossed_square()
 	{
-		init("jsonfiles.crossed_square.json");
+		init("jsonfiles/crossed_square.json");
 
 		AngleIdentifier angleIdentifier = new AngleIdentifier(_segments);
 
 		AngleEquivalenceClasses computedAngles = angleIdentifier.getAngles();
 
 		// The number of classes should equate to the number of 'minimal' angles
-		assertEquals("Number of Angle Equivalence classes", 22, computedAngles.numClasses());
+		assertEquals(22, computedAngles.numClasses());
 		
 		//
 		// ALL original segments: 4 in this figure.
@@ -392,14 +389,14 @@ class AngleIdentifierTest
 	@Test
 	void test_line_seg()
 	{
-		init("jsonfiles.line_seg.json");
+		init("jsonfiles/line_seg.json");
 
 		AngleIdentifier angleIdentifier = new AngleIdentifier(_segments);
 
 		AngleEquivalenceClasses computedAngles = angleIdentifier.getAngles();
 
 		// The number of classes should equate to the number of 'minimal' angles
-		assertEquals("Number of Angle Equivalence classes", 0, computedAngles.numClasses());
+		assertEquals(0, computedAngles.numClasses());
 		
 		//
 		// ALL original segments: 4 in this figure.

@@ -43,9 +43,11 @@ public class ImplicitPointPreprocessor
 				{
 					givenPoints.put(intersection.getX(), intersection.getY());
 					implicitPoints.add(givenPoints.getPoint(intersection));
+					System.out.println("Added " + givenPoints.getPoint(intersection));
 				}
 			}
 		}
+		System.out.println(implicitPoints);
 
 		return implicitPoints;
 	}
