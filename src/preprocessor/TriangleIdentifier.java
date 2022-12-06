@@ -20,8 +20,6 @@ public class TriangleIdentifier
 	public TriangleIdentifier(Map<Segment, Segment> segments)
 	{
 		_segments = segments.keySet().toArray(new Segment[0]);
-		_triangles = new HashSet<>();
-
 	}
 
 	/*
@@ -30,7 +28,9 @@ public class TriangleIdentifier
 	 */
 	public Set<Triangle> getTriangles()
 	{
-		if (_triangles.size() != 0) return _triangles;
+		if (_triangles != null) return _triangles;
+
+		_triangles = new HashSet<>();
 
 		computeTriangles();
 
@@ -104,7 +104,7 @@ public class TriangleIdentifier
 	 * get the segments at the indices contained in indices param.
 	 * try to use those segments to create a triangle
 	 * if successful, triangle is added to _triangles
-	 * failure wouold cause a FactException, which is caught and moved past
+	 * failure would cause a FactException, which is caught and moved past
 	 * 
 	 * @param indices array of indices of segments to use in this triangle
 	 */

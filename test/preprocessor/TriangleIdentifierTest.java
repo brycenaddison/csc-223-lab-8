@@ -327,11 +327,7 @@ class TriangleIdentifierTest
 		Point c_star = _points.getPoint(2.5, 1.5);
 		Point d_star = _points.getPoint((7.0/3), 2);
 		Point e_star = _points.getPoint((5.0/3), 2);
-		System.out.println(a_star);
-		System.out.println(b_star);
-		System.out.println(c_star);
-		System.out.println(d_star);
-		System.out.println(e_star);
+
 		Segment a_star_a = new Segment(a_star, _points.getPoint("A"));
 		Segment a_star_e = new Segment(a_star, _points.getPoint("E"));
 		Segment a_star_e_star = new Segment(a_star, e_star);

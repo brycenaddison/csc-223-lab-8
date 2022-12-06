@@ -1,19 +1,23 @@
 package preprocessor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import exceptions.FactException;
 import geometry_objects.Segment;
+import geometry_objects.Triangle;
+import geometry_objects.angle.Angle;
 import geometry_objects.angle.AngleEquivalenceClasses;
 
 public class AngleIdentifier
 {
 	protected AngleEquivalenceClasses _angles;
-	protected Map<Segment, Segment> _segments;
+	protected Segment[] _segments;
 
 	public AngleIdentifier(Map<Segment, Segment> segments)
 	{
-		_segments = segments;
-		_angles = new AngleEquivalenceClasses();
+		_segments = segments.keySet().toArray(new Segment[0]);
 	}
 
 	/*
@@ -22,6 +26,8 @@ public class AngleIdentifier
 	public AngleEquivalenceClasses getAngles()
 	{
 		if (_angles != null) return _angles;
+
+		_angles = new AngleEquivalenceClasses();
 
 		computeAngles();
 
@@ -33,8 +39,29 @@ public class AngleIdentifier
 	 * each of these to an AngleEquivalenceClass (AEC)
 	 * return the size of the AEC
 	 */
-	private void computeAngles()
+	private void computeAngles() {
+		int n = _segments.length;
+
+		// triangle requires at least 3 sides
+		if (n < 2) return;
+
+		for (int i = 0; i < n - 1; i++) {
+			for (int j = i + 1; j < n; j++) {
+				processAngle(_segments[i], _segments[j]);
+			}
+		}
+	}
+
+	/**
+	 * get the segments at the indices contained in indices param.
+	 * try to use those segments to create an angle
+	 * if successful, angle is added to _angles
+	 * failure would cause a FactException, which is caught and moved past
+	 */
+	private void processAngle(Segment a, Segment b)
 	{
-		// TODO
+		try {
+			_angles.add(new Angle(a, b));
+		} catch (FactException e) {}
 	}
 }
