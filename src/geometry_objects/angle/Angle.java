@@ -83,7 +83,7 @@ public class Angle implements Comparable<Angle>
 		double v2x = c.getX() - b.getX();
 		double v2y = c.getY() - b.getY();
 		double dotProd = v1x * v2x + v1y * v2y;
-		double cosAngle = dotProd / (Point.distance(a, b) * Point.distance(b, c));
+		double cosAngle = dotProd / (a.distanceFrom(b) * b.distanceFrom(c));
 
 		// Avoid minor calculation issues and retarget the given value to specific angles. 
 		// 0 or 180 degrees

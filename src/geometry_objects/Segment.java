@@ -205,7 +205,7 @@ public class Segment extends GeometricObject
         // Rays pointing in the same direction?
         // Avoid: <--------------------- . ---------------->
         //      V------------W------------Z
-                                     // middle  endpoint  endpoint
+        // middle  endpoint  endpoint
         return GeometryUtilities.between(otherL, shared, otherR) ||
         	   GeometryUtilities.between(otherR, shared, otherL);
     }

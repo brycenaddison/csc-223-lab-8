@@ -2,8 +2,6 @@ package geometry_objects.points;
 
 import utilities.math.MathUtilities;
 
-import java.util.Objects;
-
 /**
  * A 2D Point (x, y) only. It also has a name, defaulting to __UNNAMED
  * 

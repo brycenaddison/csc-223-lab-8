@@ -20,7 +20,13 @@ import utilities.eq_classes.EquivalenceClasses;
  *   canonical = BAE
  *   rest = BAF, CAE, DAE, CAF, DAF
  */
+
+import java.util.List;
+
 public class AngleEquivalenceClasses extends EquivalenceClasses<Angle>
 {
-	// TODO
+	public AngleEquivalenceClasses()
+	{
+
+	}
 }
