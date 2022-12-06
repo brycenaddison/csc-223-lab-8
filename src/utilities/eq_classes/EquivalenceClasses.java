@@ -46,7 +46,11 @@ public class EquivalenceClasses<T>
 		_rest.add(new LinkedEquivalenceClass<T>(_comparator));
 		return add(element);
 	}
-	
+
+	public List<LinkedEquivalenceClass<T>> classes() {
+		return _rest;
+	}
+
 	/**
 	 * looks in the LEC (_rest and canonical) for target
 	 * @param T target value to search for
@@ -104,7 +108,7 @@ public class EquivalenceClasses<T>
 		String str = new String();
 		for (LinkedEquivalenceClass<T> c : _rest)
 		{
-			str = str + c.toString() + " : ";
+			str = str + c.toString() + " : \n";
 		}
 		return str.substring(0, str.length() - 3);
 	}

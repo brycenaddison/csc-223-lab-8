@@ -30,23 +30,12 @@ public class AngleLinkedEquivalenceClass extends LinkedEquivalenceClass<Angle>
 {
 
     public static final int STRUCTURALLY_INCOMPARABLE = Integer.MAX_VALUE;
-
-    // please fix this
-    Angle _canonical;
-	AngleStructureComparator _comparator;
-	LinkedList<Angle> _rest;
+    private static final AngleStructureComparator comparator = new AngleStructureComparator();
 
     public AngleLinkedEquivalenceClass()
     {
-        super (new AngleStructureComparator());
-        _rest = new LinkedList<Angle>();
-        _comparator = new AngleStructureComparator();
-    }
-    public AngleLinkedEquivalenceClass(AngleStructureComparator c)
-    {
-        super (c);
-        _rest = new LinkedList<Angle>();
-        _comparator = c;
+        super (comparator);
+
     }
 
     /**add new element, maintaining canonical as smallest
@@ -68,38 +57,34 @@ public class AngleLinkedEquivalenceClass extends LinkedEquivalenceClass<Angle>
         if (element == null) { return false; }
 
         //empty canonical, just set it
-		if (_canonical == null)
+		if (canonical() == null)
 		{
-			_canonical = element;
+            demoteAndSetCanonical(element);
 			return true;
 		}
 
         // not equivalent angle
         if (!belongs(element)) { return false; }
 
+
         // element > canonical. do not replace canonical
         // add element to _rest
-        if (_comparator.compare(element, _canonical) >= 0)
+        if (comparator.compare(element, canonical()) >= 0)
         {
-            _rest.addToFront(element);
+            addWithoutCheck(element);
             return true;
         }
 
         // element < canonical. demote and set.
-		_rest.addToFront(_canonical);
-		_canonical = element;
-		return true;		
+		return demoteAndSetCanonical(element);
 	}
 
-    // override to prevent canonical rule being broken
-    @Override
-    public boolean demoteAndSetCanonical(Angle element) { return false; }
 
     // adjust value to check (becomes !STRUCTURALLY_INCOMPARABLE instead of 0)
     @Override
     public boolean belongs(Angle element)
     {
         if (element == null) return false;
-		return (contains(element) || _comparator.compare(_canonical, element) != STRUCTURALLY_INCOMPARABLE);
+		return (contains(element) || comparator.compare(canonical(), element) != STRUCTURALLY_INCOMPARABLE);
     }
 }

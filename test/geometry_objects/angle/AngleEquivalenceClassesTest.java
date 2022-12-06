@@ -17,7 +17,7 @@ public class AngleEquivalenceClassesTest
     void testAngleEquivalenceClasses()
     {
         AngleEquivalenceClasses aec = new AngleEquivalenceClasses();
-        assertEquals(0, aec._rest.size());
+        assertEquals(0, aec.numClasses());
     }
 
     /*
@@ -34,7 +34,7 @@ public class AngleEquivalenceClassesTest
         Angle a = new Angle(new Segment(new Point(0, 0), new Point(0, 1)),
                             new Segment(new Point(0, 0), new Point(1, 0)));
         assertTrue(aec.add(a));
-        assertEquals(1, aec._rest.size());
+        assertEquals(1, aec.numClasses());
     }
     @Test
     void testAdd_another() throws FactException
@@ -46,7 +46,7 @@ public class AngleEquivalenceClassesTest
                             new Segment(new Point(0, 0), new Point(1, 0)));
         assertTrue(aec.add(a));
         assertTrue(aec.add(b));
-        assertEquals(1, aec._rest.size());
+        assertEquals(1, aec.numClasses());
     }
     @Test
     void testAdd_new() throws FactException
@@ -61,7 +61,7 @@ public class AngleEquivalenceClassesTest
         aec.add(a);
         aec.add(b);
         assertTrue(aec.add(c));
-        assertEquals(2, aec._rest.size());
+        assertEquals(2, aec.numClasses());
     }
     @Test
     void testAdd_anothernew() throws FactException
@@ -74,18 +74,18 @@ public class AngleEquivalenceClassesTest
         Angle c = new Angle(new Segment(new Point(1, 1), new Point(2,  -1)),
                             new Segment(new Point(1, 1), new Point(1, -1)));
         Angle d = new Angle(new Segment(new Point(1, 1), new Point(2,  -1)),
-                            new Segment(new Point(1, 1), new Point(1, -4)));
+                            new Segment(new Point(1, 1), new Point(1, -1)));
         aec.add(a);
         aec.add(b);
         aec.add(c);
         assertTrue(aec.add(d));
-        assertEquals(2, aec._rest.size());
+        assertEquals(2, aec.numClasses());
     }
     @Test
     void testAdd_null()
     {
         AngleEquivalenceClasses aec = new AngleEquivalenceClasses();
         assertFalse(aec.add(null));
-        assertEquals(0, aec._rest.size());
+        assertEquals(0, aec.numClasses());
     }
 }

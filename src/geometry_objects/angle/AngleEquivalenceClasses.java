@@ -2,8 +2,9 @@ package geometry_objects.angle;
 
 import geometry_objects.angle.comparators.AngleStructureComparator;
 import utilities.eq_classes.EquivalenceClasses;
+import utilities.eq_classes.LinkedEquivalenceClass;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Given the figure below:
@@ -23,40 +24,26 @@ import java.util.ArrayList;
  *   rest = BAF, CAE, DAE, CAF, DAF
  */
 
-import java.util.List;
 
 public class AngleEquivalenceClasses extends EquivalenceClasses<Angle>
 {
-	//please fix this
-	AngleStructureComparator _comparator;
-	List<AngleLinkedEquivalenceClass> _rest;
-
 	public AngleEquivalenceClasses()
 	{
 		super(new AngleStructureComparator());
-		_rest = new ArrayList<AngleLinkedEquivalenceClass>();
-		_comparator = new AngleStructureComparator();
 	}
 
-	/**
-	 * identical add function except datatypes changed to match.
-	 * 
-	 * adds element to the proper LEC
-	 * null elements cannot be added
-	 * if no LEC exists for element, a new one is created and add is called again
-	 *    element will become the canonical of this new LEC
-	 * @param T element value to add to a LEC
-	 * @return boolean false if value is not added (null), true otherwise
-	 */
-	@Override
 	public boolean add(Angle element)
 	{
 		if (element == null) return false;
-		for (AngleLinkedEquivalenceClass c : _rest)
+		List<LinkedEquivalenceClass<Angle>> angles = classes();
+
+		for (LinkedEquivalenceClass<Angle> c : angles)
 		{
 			if (c.add(element)) return true;
 		}
-		_rest.add(new AngleLinkedEquivalenceClass(_comparator));
+
+		angles.add(new AngleLinkedEquivalenceClass());
 		return add(element);
 	}
+
 }

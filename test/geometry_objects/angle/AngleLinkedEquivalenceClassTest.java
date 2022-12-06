@@ -19,8 +19,8 @@ class AngleLinkedEquivalenceClassTest
     void testAngleLinkedEquivalenceClass()
     {
         AngleLinkedEquivalenceClass alec = new AngleLinkedEquivalenceClass();
-        assertEquals(null, alec._canonical);
-        assertEquals(0, alec._rest.size());
+        assertNull(alec.canonical());
+        assertEquals(0, alec.size());
     }
 
     /*
@@ -38,8 +38,8 @@ class AngleLinkedEquivalenceClassTest
         Angle a = new Angle(new Segment(new Point(0, 0), new Point(0, 1)),
                             new Segment(new Point(0, 0), new Point(1, 0)));
         assertTrue(alec.add(a));
-        assertEquals(a, alec._canonical);
-        assertEquals(0, alec._rest.size());
+        assertEquals(a, alec.canonical());
+        assertEquals(0, alec.size());
     }
     @Test
     void testAdd_larger() throws FactException
@@ -51,9 +51,9 @@ class AngleLinkedEquivalenceClassTest
                             new Segment(new Point(0, 0), new Point(2, 0)));
         alec.add(a);
         assertTrue(alec.add(b));
-        assertEquals(a, alec._canonical);
-        assertEquals(1, alec._rest.size());
-        assertTrue(alec._rest.contains(b));
+        assertEquals(a, alec.canonical());
+        assertEquals(1, alec.size());
+        assertTrue(alec.contains(b));
     }
     @Test
     void testAdd_smaller() throws FactException
@@ -65,9 +65,9 @@ class AngleLinkedEquivalenceClassTest
                             new Segment(new Point(0, 0), new Point(1, 0)));
         alec.add(a);
         assertTrue(alec.add(b));
-        assertEquals(b, alec._canonical);
-        assertEquals(1, alec._rest.size());
-        assertTrue(alec._rest.contains(a));
+        assertEquals(b, alec.canonical());
+        assertEquals(1, alec.size());
+        assertTrue(alec.contains(a));
     }
     @Test
     void testAdd_unclear() throws FactException
@@ -79,8 +79,8 @@ class AngleLinkedEquivalenceClassTest
                             new Segment(new Point(0, 0), new Point(2, 0)));
         alec.add(a);
         assertTrue(alec.add(b));
-        assertEquals(a, alec._canonical);
-        assertEquals(1, alec._rest.size());
+        assertEquals(a, alec.canonical());
+        assertEquals(1, alec.size());
     }
     @Test
     void testAdd_notcomparable() throws FactException
@@ -92,8 +92,8 @@ class AngleLinkedEquivalenceClassTest
                             new Segment(new Point(2, -1), new Point(4, -2)));
         alec.add(a);
         assertFalse(alec.add(b));
-        assertEquals(a, alec._canonical);
-        assertEquals(0, alec._rest.size());
+        assertEquals(a, alec.canonical());
+        assertEquals(0, alec.size());
     }
     @Test
     void testAdd_null()

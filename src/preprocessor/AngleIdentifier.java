@@ -12,7 +12,7 @@ import geometry_objects.angle.AngleEquivalenceClasses;
 
 public class AngleIdentifier
 {
-	protected AngleEquivalenceClasses _angles;
+	protected List<Angle> _angles;
 	protected Segment[] _segments;
 
 	public AngleIdentifier(Map<Segment, Segment> segments)
@@ -25,9 +25,20 @@ public class AngleIdentifier
 	 */
 	public AngleEquivalenceClasses getAngles()
 	{
+		AngleEquivalenceClasses classes = new AngleEquivalenceClasses();
+
+		List<Angle> angles = getAngleList();
+
+		for (Angle angle: angles) {
+			classes.add(angle);
+		}
+		return classes;
+	}
+
+	public List<Angle> getAngleList() {
 		if (_angles != null) return _angles;
 
-		_angles = new AngleEquivalenceClasses();
+		_angles = new ArrayList<>();
 
 		computeAngles();
 

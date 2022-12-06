@@ -76,6 +76,10 @@ public class LinkedEquivalenceClass<T> extends LinkedList<T>
 		}
 		return false;
 	}
+
+	public void addWithoutCheck(T element) {
+		_rest.addToFront(element);
+	}
 	
 	/**
 	 * check if value is in _rest or canonical
