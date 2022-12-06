@@ -103,7 +103,6 @@ class AngleIdentifierTest
 			//
 
 			// Straight angles
-			//
 			expectedAngles.add(new Angle(a_star_b, a_star_e));
 			
 			expectedAngles.add(new Angle(ac, ce));
@@ -113,7 +112,6 @@ class AngleIdentifierTest
 			expectedAngles.add(new Angle(ab, bd));
 			
 			// right angles
-			//
 			expectedAngles.add(new Angle(a_star_b, a_star_d));
 			
 			expectedAngles.add(new Angle(a_star_b, a_star_c));
@@ -122,7 +120,7 @@ class AngleIdentifierTest
 
 			expectedAngles.add(new Angle(a_star_c, a_star_e));
 			
-			// 
+			//
 			//
 			expectedAngles.add(new Angle(a_star_b, ab));
 			expectedAngles.add(new Angle(be, ab));

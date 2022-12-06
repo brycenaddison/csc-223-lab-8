@@ -13,6 +13,7 @@ public class AngleIdentifier
 	public AngleIdentifier(Map<Segment, Segment> segments)
 	{
 		_segments = segments;
+		_angles = new AngleEquivalenceClasses();
 	}
 
 	/*
@@ -22,13 +23,16 @@ public class AngleIdentifier
 	{
 		if (_angles != null) return _angles;
 
-		_angles = new AngleEquivalenceClasses();
-
 		computeAngles();
 
 		return _angles;
 	}
 
+	/**
+	 * Map contains segment, segment pairs. Add
+	 * each of these to an AngleEquivalenceClass (AEC)
+	 * return the size of the AEC
+	 */
 	private void computeAngles()
 	{
 		// TODO

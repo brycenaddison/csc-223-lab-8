@@ -31,6 +31,7 @@ public class AngleLinkedEquivalenceClass extends LinkedEquivalenceClass<Angle>
 
     public static final int STRUCTURALLY_INCOMPARABLE = Integer.MAX_VALUE;
 
+    // please fix this
     Angle _canonical;
 	AngleStructureComparator _comparator;
 	LinkedList<Angle> _rest;
@@ -48,8 +49,18 @@ public class AngleLinkedEquivalenceClass extends LinkedEquivalenceClass<Angle>
         _comparator = c;
     }
 
-    // add new element, maintaining canonical as smallest
-    // unclear (0) added to _rest
+    /**add new element, maintaining canonical as smallest
+     * unclear (0 result) added to _rest
+     *
+     * null value in is not added, returns false
+     * empty canonical is replaced with element and returns true
+     * does not belong returns false, no addition done anywhere
+     * if the element is >= than the canonical, element is added the _rest and canonical remains. return true
+     * lastly (element < canonical), canonical moves to _rest, element becomes the new canonical, and returns true
+     * 
+	 * @param Angle element value to add
+	 * @return false if element does not belong, true if element is successfully added as canonical or in _rest
+     */
     @Override
     public boolean add(Angle element)
 	{
@@ -84,7 +95,7 @@ public class AngleLinkedEquivalenceClass extends LinkedEquivalenceClass<Angle>
     @Override
     public boolean demoteAndSetCanonical(Angle element) { return false; }
 
-    //
+    // adjust value to check (becomes !STRUCTURALLY_INCOMPARABLE instead of 0)
     @Override
     public boolean belongs(Angle element)
     {
