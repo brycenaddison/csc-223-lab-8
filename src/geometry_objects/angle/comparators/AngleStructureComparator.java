@@ -55,6 +55,12 @@ public class AngleStructureComparator implements Comparator<Angle>
 	@Override
 	public int compare(Angle left, Angle right)
 	{
+		// null
+		if (left == null || right == null)
+		{
+			return STRUCTURALLY_INCOMPARABLE;
+		}
+
 		// same points
         if (left.equals(right)) return 0;
 

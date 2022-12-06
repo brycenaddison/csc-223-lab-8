@@ -7,8 +7,8 @@ package utilities.eq_classes;
  */
 import java.util.Comparator;
 
-public class LinkedEquivalenceClass<T> extends LinkedList<T>{
-	
+public class LinkedEquivalenceClass<T> extends LinkedList<T>
+{	
 	 T _canonical;
 	 Comparator<T> _comparator;
 	 LinkedList<T> _rest;
@@ -85,13 +85,14 @@ public class LinkedEquivalenceClass<T> extends LinkedList<T>{
 	public boolean contains(T target)
 	{
 		if (target == null) return _canonical == target || _rest.contains(target);
+		if (_canonical == null) return _rest.contains(target);
 		return _canonical.equals(target) || _rest.contains(target);
 	}
 	
 	/**
 	 * determine if target meets requirements to be in the equivalence class
 	 * @param T target value to evaluate in comparator to canonical
-	 * @return false if target is null, already in _rest, or 
+	 * @return false if target is null, already in _rest, or not equivalent
 	 */
 	public boolean belongs(T target)
 	{

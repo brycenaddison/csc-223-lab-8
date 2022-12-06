@@ -3,8 +3,6 @@ package geometry_objects.angle;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import exceptions.FactException;
 import geometry_objects.angle.comparators.AngleStructureComparator;
@@ -26,6 +24,8 @@ class AngleStructureComparatorTest
      *                                  \
      * second rays do not share a point /_
      *                                 <
+     * null left
+     * null right
      */
     @Test
     void compare_same()  throws FactException
@@ -97,5 +97,19 @@ class AngleStructureComparatorTest
         Angle a = new Angle(new Segment(new Point(0, 0), new Point(2, 2)), new Segment(new Point(0,0), new Point(2, -1)));
         Angle b = new Angle(new Segment(new Point(2, 2), new Point(4, 3)), new Segment(new Point(2, 2), new Point(4, 1)));
         assertEquals(STRUCTURALLY_INCOMPARABLE, comparator.compare(a, b));
+    }
+    @Test
+    void compare_leftnull()  throws FactException
+    {
+        AngleStructureComparator comparator = new AngleStructureComparator();
+        Angle a = new Angle(new Segment(new Point(0, 0), new Point(2, 2)), new Segment(new Point(0,0), new Point(2, -1)));
+        assertEquals(STRUCTURALLY_INCOMPARABLE, comparator.compare(null, a));
+    }
+    @Test
+    void compare_rightnull()  throws FactException
+    {
+        AngleStructureComparator comparator = new AngleStructureComparator();
+        Angle a = new Angle(new Segment(new Point(0, 0), new Point(2, 2)), new Segment(new Point(0,0), new Point(2, -1)));
+        assertEquals(STRUCTURALLY_INCOMPARABLE, comparator.compare(a, null));
     }
 }

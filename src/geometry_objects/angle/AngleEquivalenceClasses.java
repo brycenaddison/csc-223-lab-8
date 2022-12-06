@@ -25,8 +25,23 @@ import java.util.List;
 
 public class AngleEquivalenceClasses extends EquivalenceClasses<Angle>
 {
+	AngleStructureComparator _comparator;
+	List<AngleLinkedEquivalenceClass> _rest;
+
 	public AngleEquivalenceClasses()
 	{
+		super(new AngleStructureComparator());
+	}
 
+	@Override
+	public boolean add(Angle element)
+	{
+		if (element == null) return false;
+		for (AngleLinkedEquivalenceClass c : _rest)
+		{
+			if (c.add(element)) return true;
+		}
+		_rest.add(new AngleLinkedEquivalenceClass(_comparator));
+		return add(element);
 	}
 }
