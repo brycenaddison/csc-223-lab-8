@@ -20,7 +20,7 @@ public class TriangleIdentifier
 	public TriangleIdentifier(Map<Segment, Segment> segments)
 	{
 		_segments = segments.keySet().toArray(new Segment[0]);
-		_triangles = new HashSet<Triangle>();
+		_triangles = new HashSet<>();
 
 	}
 
@@ -30,7 +30,7 @@ public class TriangleIdentifier
 	 */
 	public Set<Triangle> getTriangles()
 	{
-		if (_triangles != null) return _triangles;
+		if (_triangles.size() != 0) return _triangles;
 
 		computeTriangles();
 

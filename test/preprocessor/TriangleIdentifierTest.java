@@ -49,7 +49,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_crossing_symmetric_triangle()
 	{
-		init("jsonfiles.crossing_symmetric_triangle.json");
+		init("jsonfiles/crossing_symmetric_triangle.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -132,7 +132,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_single_triangle()
 	{
-		init("jsonfiles.simple_triangle.json");
+		init("jsonfiles/simple_triangle.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -183,7 +183,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_crossed_square()
 	{
-		init("jsonfiles.crossed_square.json");
+		init("jsonfiles/crossed_square.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -228,12 +228,13 @@ class TriangleIdentifierTest
 			expectedTriangles.add(new Triangle(Arrays.asList(ad, bd, ab)));
 			expectedTriangles.add(new Triangle(Arrays.asList(ad, cd, ac)));
 			expectedTriangles.add(new Triangle(Arrays.asList(cb, ac, ab)));
-			expectedTriangles.add(new Triangle(Arrays.asList(ad, ab, bd)));
+			expectedTriangles.add(new Triangle(Arrays.asList(cb, bd, cd)));
+
 		}
 		catch (FactException te) { System.err.println("Invalid triangles in triangle test."); }
 
 		assertEquals(expectedTriangles.size(), computedTriangles.size());
-		
+
 		for (Triangle computedTriangle : computedTriangles)
 		{
 			assertTrue(expectedTriangles.contains(computedTriangle));
@@ -247,7 +248,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_line_seg()
 	{
-		init("jsonfiles.line_seg.json");
+		init("jsonfiles/line_seg.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -299,7 +300,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_star()
 	{
-		init("jsonfiles.star.json");
+		init("jsonfiles/star.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -324,9 +325,13 @@ class TriangleIdentifierTest
 		Point a_star = _points.getPoint(1.5, 1.5);
 		Point b_star = _points.getPoint(2, 1);
 		Point c_star = _points.getPoint(2.5, 1.5);
-		Point d_star = _points.getPoint((7/3), 2);
-		Point e_star = _points.getPoint((5/3), 2);
-
+		Point d_star = _points.getPoint((7.0/3), 2);
+		Point e_star = _points.getPoint((5.0/3), 2);
+		System.out.println(a_star);
+		System.out.println(b_star);
+		System.out.println(c_star);
+		System.out.println(d_star);
+		System.out.println(e_star);
 		Segment a_star_a = new Segment(a_star, _points.getPoint("A"));
 		Segment a_star_e = new Segment(a_star, _points.getPoint("E"));
 		Segment a_star_e_star = new Segment(a_star, e_star);
@@ -338,6 +343,7 @@ class TriangleIdentifierTest
 
 		Segment c_star_b = new Segment(c_star, _points.getPoint("B"));
 		Segment c_star_c = new Segment(c_star, _points.getPoint("C"));
+
 		Segment c_star_d_star = new Segment(c_star, d_star);
 
 		Segment d_star_c = new Segment(d_star, _points.getPoint("C"));
