@@ -3,6 +3,8 @@ package geometry_objects.angle;
 import geometry_objects.angle.comparators.AngleStructureComparator;
 import utilities.eq_classes.EquivalenceClasses;
 
+import java.util.ArrayList;
+
 /**
  * Given the figure below:
  * 
@@ -31,6 +33,8 @@ public class AngleEquivalenceClasses extends EquivalenceClasses<Angle>
 	public AngleEquivalenceClasses()
 	{
 		super(new AngleStructureComparator());
+		_rest = new ArrayList<AngleLinkedEquivalenceClass>();
+		_comparator = new AngleStructureComparator();
 	}
 
 	@Override
