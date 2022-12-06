@@ -54,12 +54,7 @@ class AngleIdentifierTest
 		AngleIdentifier angleIdentifier = new AngleIdentifier(_segments);
 
 //		AngleEquivalenceClasses computedAngles = angleIdentifier.getAngles();
-		AngleEquivalenceClasses computedAngles = new AngleEquivalenceClasses();
-		List<Angle> angles = angleIdentifier.getAngleList();
-
-		for (Angle angle: angles) {
-			computedAngles.add(angle);
-		}
+		AngleEquivalenceClasses computedAngles = angleIdentifier.getAngles();
 
 		// The number of classes should equate to the number of 'minimal' angles
 		assertEquals(25, computedAngles.numClasses());

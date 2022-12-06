@@ -97,8 +97,7 @@ public class Segment extends GeometricObject
 	{
 		if (obj == null) return false;
 		
-		if (!(obj instanceof Segment)) return false;
-		Segment that = (Segment)obj;
+		if (!(obj instanceof Segment that)) return false;
 
 		return this.has(that.getPoint1()) && this.has(that.getPoint2());
 	}

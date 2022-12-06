@@ -24,8 +24,6 @@ package geometry_objects.angle;
 import geometry_objects.angle.comparators.AngleStructureComparator;
 import utilities.eq_classes.LinkedEquivalenceClass;
 
-import utilities.eq_classes.LinkedList;
-
 public class AngleLinkedEquivalenceClass extends LinkedEquivalenceClass<Angle>
 {
 

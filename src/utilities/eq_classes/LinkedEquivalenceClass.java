@@ -152,6 +152,6 @@ public class LinkedEquivalenceClass<T> extends LinkedList<T>
 	public String toString()
 	{
 		if (_canonical == null) return "null | " + _rest.toString();
-		return _canonical.toString() + " | " + _rest.toString();
+		return _canonical + " | " + _rest.toString();
 	}
 }

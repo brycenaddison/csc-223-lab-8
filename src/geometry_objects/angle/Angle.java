@@ -64,7 +64,7 @@ public class Angle implements Comparable<Angle>
 
 		_measure = Math.toDegrees(findAngle(_ray1Endpoint, _vertex, _ray2Endpoint));
 
-		if (_measure <= 0) throw new FactException("Measure of " + this.toString() + " is ZERO");
+		if (_measure <= 0) throw new FactException("Measure of " + this + " is ZERO");
 	}
 	
 	/**

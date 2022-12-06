@@ -32,6 +32,7 @@ public class AngleEquivalenceClasses extends EquivalenceClasses<Angle>
 		super(new AngleStructureComparator());
 	}
 
+	// Similar implementation to EquivalenceClasses but needs to construct an AngleLinkedEquivalenceClass
 	public boolean add(Angle element)
 	{
 		if (element == null) return false;
@@ -42,6 +43,7 @@ public class AngleEquivalenceClasses extends EquivalenceClasses<Angle>
 			if (c.add(element)) return true;
 		}
 
+		// Construct AngleLinkedEquivalence Class to use new add method
 		angles.add(new AngleLinkedEquivalenceClass());
 		return add(element);
 	}

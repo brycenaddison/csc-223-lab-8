@@ -146,10 +146,9 @@ public class SegmentNodeDatabase implements ComponentNode {
 	private boolean hasDirectedSegment(PointNode start, PointNode end, List<SegmentNode> segmentList) {
 		SegmentNode segmentReversed = new SegmentNode(end, start);
 		//check if compliment is in list
-		if (segmentList.contains(segmentReversed)) return true;
+        return segmentList.contains(segmentReversed);
 		//if not false
-		return false;
-	}
+    }
 	
 	/**
 	 * Creates a list of unique segmentNodes based on the adjacency lists

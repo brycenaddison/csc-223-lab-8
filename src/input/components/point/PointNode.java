@@ -83,14 +83,11 @@ public class PointNode implements ComponentNode
 		//check if obj is null
 		if(obj == null) return false;
 		//check if obj is an instance of PointNode
-		if (!(obj instanceof PointNode)) return false;
+		if (!(obj instanceof PointNode that)) return false;
 		
 		//cast obj to PointNode data type
-		PointNode that = (PointNode)obj;
 		if (!(MathUtilities.doubleEquals(this._x, that._x))) return false;
-		if (!(MathUtilities.doubleEquals(this._y, that._y))) return false;
-		
-		return true;
+		return MathUtilities.doubleEquals(this._y, that._y);
 	}
 	
 
@@ -106,7 +103,7 @@ public class PointNode implements ComponentNode
 	public void unparse(StringBuilder sb, int level) {
 		
 		//add this to the string builder
-		sb.append(StringUtilities.indent(level) + this.toString());
+		sb.append(StringUtilities.indent(level) + this);
 		
 	}
 	

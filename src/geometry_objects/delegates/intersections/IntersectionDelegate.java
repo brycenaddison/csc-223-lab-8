@@ -14,8 +14,6 @@ public class IntersectionDelegate extends FigureDelegate
     {
         Point p = SegmentIntersectionDelegate.findIntersection(thisS, that);
 
-        if(p != null) return p;
-
-        return null;
+        return p;
     }
 }

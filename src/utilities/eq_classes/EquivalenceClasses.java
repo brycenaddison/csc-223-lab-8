@@ -105,7 +105,7 @@ public class EquivalenceClasses<T>
 	public String toString()
 	{
 		if (_rest.isEmpty()) return "null | null, null";
-		String str = new String();
+		String str = "";
 		for (LinkedEquivalenceClass<T> c : _rest)
 		{
 			str = str + c.toString() + " : \n";

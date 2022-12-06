@@ -48,10 +48,8 @@ public class SegmentDelegate extends FigureDelegate
 		if (intersection == null) return false;
 		
 		if (thisS.has(intersection) && that.pointLiesBetweenEndpoints(intersection)) return true;
-		if (that.has(intersection) && thisS.pointLiesBetweenEndpoints(intersection)) return true;
-
-		return false;
-	}
+        return that.has(intersection) && thisS.pointLiesBetweenEndpoints(intersection);
+    }
 
 	/*
 	 * @param pt -- a point

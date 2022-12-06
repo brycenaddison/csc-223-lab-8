@@ -57,11 +57,9 @@ public class Triangle
 			segs.get(1).isCollinearWith(segs.get(2))) return false;
 		
 		// 3 distinct endpoints must be shared.
-		if (endpoint1.equals(endpoint2) ||
-            endpoint1.equals(endpoint3) ||
-			endpoint2.equals(endpoint3)) return false;
-
-		return true;
+		return !endpoint1.equals(endpoint2) &&
+				!endpoint1.equals(endpoint3) &&
+				!endpoint2.equals(endpoint3);
 	}
 
 	/*

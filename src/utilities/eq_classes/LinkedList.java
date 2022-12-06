@@ -199,7 +199,7 @@ public class LinkedList<T>
     private String toString(Node<T> n, String s)
     {
     	if (n.equals(_tail)) {return s + ", null";}
-    	s = s + ", " + String.valueOf(n._data);
+    	s = s + ", " + n._data;
     	n = n._next;
     	return toString(n, s);
     }

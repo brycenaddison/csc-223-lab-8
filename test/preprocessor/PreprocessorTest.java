@@ -1,9 +1,5 @@
 package preprocessor;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -19,6 +15,8 @@ import geometry_objects.points.Point;
 import geometry_objects.points.PointDatabase;
 import input.InputFacade;
 import preprocessor.delegates.ImplicitPointPreprocessor;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class PreprocessorTest
 {
@@ -383,14 +381,14 @@ class PreprocessorTest
 	{
 		Segment s1 = new Segment(new Point("A", 0, 1), new Point("B", 0, 2));
 		Segment s2 = new Segment (new Point("C", 0, 3), new Point("D", 0, 5));
-		assertEquals(null, extend(s1, s2));
+        assertNull(extend(s1, s2));
 	}
 	@Test
 	void testExtend_notcollinear()
 	{
 		Segment s1 = new Segment(new Point("A", 0, 1), new Point("B", 0, 2));
 		Segment s2 = new Segment (new Point("C", 0, 3), new Point("D", 4, 5));
-		assertEquals(null, extend(s1, s2));
+        assertNull(extend(s1, s2));
 	}
 	@Test
 	void testExtend_good()

@@ -28,7 +28,7 @@ public class JSONParser
 {
 	protected ComponentNode  _astRoot;
 	
-	private DefaultBuilder _builder;
+	private final DefaultBuilder _builder;
 
 
 	public JSONParser(DefaultBuilder builder)

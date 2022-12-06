@@ -6,13 +6,12 @@ import java.util.Map;
 
 import exceptions.FactException;
 import geometry_objects.Segment;
-import geometry_objects.Triangle;
 import geometry_objects.angle.Angle;
 import geometry_objects.angle.AngleEquivalenceClasses;
 
 public class AngleIdentifier
 {
-	protected List<Angle> _angles;
+	protected AngleEquivalenceClasses _angles;
 	protected Segment[] _segments;
 
 	public AngleIdentifier(Map<Segment, Segment> segments)
@@ -21,24 +20,12 @@ public class AngleIdentifier
 	}
 
 	/*
-	 * Compute the figure triangles on the fly when requested; memorize results for subsequent calls.
+	 * Compute the figure angles on the fly when requested; memorize results for subsequent calls.
 	 */
-	public AngleEquivalenceClasses getAngles()
-	{
-		AngleEquivalenceClasses classes = new AngleEquivalenceClasses();
-
-		List<Angle> angles = getAngleList();
-
-		for (Angle angle: angles) {
-			classes.add(angle);
-		}
-		return classes;
-	}
-
-	public List<Angle> getAngleList() {
+	public AngleEquivalenceClasses getAngles() {
 		if (_angles != null) return _angles;
 
-		_angles = new ArrayList<>();
+		_angles = new AngleEquivalenceClasses();
 
 		computeAngles();
 
@@ -53,7 +40,7 @@ public class AngleIdentifier
 	private void computeAngles() {
 		int n = _segments.length;
 
-		// triangle requires at least 3 sides
+		// angle requires two sides
 		if (n < 2) return;
 
 		for (int i = 0; i < n - 1; i++) {
