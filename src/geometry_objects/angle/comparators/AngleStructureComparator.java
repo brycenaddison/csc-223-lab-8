@@ -3,10 +3,8 @@
  * and redundancy. If necessary, additional paragraphs should be preceded by <p>,
  * the html tag for a new paragraph.
  *
- * <p>Bugs: (a list of bugs and / or other problems)
- *
- * @author <your name>
- * @date   <date of completion>
+ * @author Brycen Addison, Hanna King
+ * @date   12/6/2022
  */
 
 package geometry_objects.angle.comparators;
@@ -51,6 +49,8 @@ public class AngleStructureComparator implements Comparator<Angle>
 	 * @return -- according to the algorithm above:
  	 *            Integer.MAX_VALUE will refer to our error result
  	 *            0 indicates an inconclusive result
+	 *            1 indicates left is greater
+	 *            -1 indicates left is less than
 	 */
 	@Override
 	public int compare(Angle left, Angle right)
@@ -84,7 +84,7 @@ public class AngleStructureComparator implements Comparator<Angle>
 			// flipped angles do not share a point
 			if (!Segment.overlaysAsRay(left.getRay2(), right.getRay1())) return STRUCTURALLY_INCOMPARABLE;
 
-			// Opposite rays are collinear
+			// opposite rays are collinear
 			left1 = left.getRay1().length();
 			left2 = left.getRay2().length();
 			right1 = right.getRay2().length();
@@ -99,7 +99,7 @@ public class AngleStructureComparator implements Comparator<Angle>
 
 		// cannot clearly state that one angle is structurally ‘smaller’ or larger’
 		// aka one ray in the left angle is larger than its corresponding ray in the right angle while
-		// the left ray is smaller than its corresponding ray in the right angle
+		// the left ray is smaller than its corresponding ray in the right angle or vice versa
 		return 0;
 	}
 }

@@ -171,7 +171,8 @@ public class Angle implements Comparable<Angle>
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(Object o)
+	{
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Angle that = (Angle) o;

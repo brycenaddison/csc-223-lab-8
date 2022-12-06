@@ -33,6 +33,7 @@ public class Segment extends GeometricObject
 	{
 		_point1 = p1;
 		_point2 = p2;
+		_length = Math.sqrt(Math.pow((_point1.getX() - _point2.getX()), 2) + Math.pow((_point1.getY() - _point2.getY()), 2));
 	}
 
 	/*
