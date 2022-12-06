@@ -31,7 +31,7 @@ class PreprocessorTest
 	void test_implicit_crossings()
 	{
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(
-				"fully_connected_irregular_polygon.json"
+				"jsonfiles.fully_connected_irregular_polygon.json"
 		);
 
 		PointDatabase points = pair.getKey();
@@ -170,7 +170,7 @@ class PreprocessorTest
 	void test_implicit_crossed_square()
 	{
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(
-				"crossed_square.json"
+				"jsonfiles.crossed_square.json"
 		);
 
 		PointDatabase points = pair.getKey();
@@ -261,7 +261,7 @@ class PreprocessorTest
 	void test_no_implicit()
 	{
 		Map.Entry<PointDatabase, Set<Segment>> pair = InputFacade.toGeometryRepresentation(
-				"simple_triangle.json"
+				"jsonfiles.simple_triangle.json"
 		);
 
 		PointDatabase points = pair.getKey();

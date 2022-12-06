@@ -49,7 +49,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_crossing_symmetric_triangle()
 	{
-		init("crossing_symmetric_triangle.json");
+		init("jsonfiles.crossing_symmetric_triangle.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -132,7 +132,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_single_triangle()
 	{
-		init("simple_triangle.json");
+		init("jsonfiles.simple_triangle.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -183,7 +183,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_crossed_square()
 	{
-		init("crossed_square.json");
+		init("jsonfiles.crossed_square.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -247,7 +247,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_line_seg()
 	{
-		init("line_seg.json");
+		init("jsonfiles.line_seg.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
@@ -299,7 +299,7 @@ class TriangleIdentifierTest
 	@Test
 	void test_star()
 	{
-		init("star.json");
+		init("jsonfiles.star.json");
 
 		TriangleIdentifier triIdentifier = new TriangleIdentifier(_segments);
 
